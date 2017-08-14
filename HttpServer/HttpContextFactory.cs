@@ -54,7 +54,7 @@ namespace HttpServer
                 if (_contextQueue.Count > 0)
                 {
                     context = _contextQueue.Dequeue();
-                    if (!context.IsAvailable)
+                    if (!context.Available)
                     {
                         context = CreateNewContext(isSecured, endPoint, clientCertificate, stream, socket);
                         context.Disconnected += OnFreeContext;
