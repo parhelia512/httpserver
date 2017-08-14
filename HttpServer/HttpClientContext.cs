@@ -24,12 +24,8 @@ namespace HttpServer
         private readonly int _bufferSize;
         private IHttpRequest _currentRequest;
         private ClientCertificate _clientCertificate;
-		private IPEndPoint _localEndPoint;
-
-        /// <summary>
-        /// Gets or sets whether the context is available for re use.
-        /// </summary>
-        public bool IsAvailable { get; set; }
+	private IPEndPoint _localEndPoint;
+        public bool Available = true; 
 
 		/// <summary>
 		/// This context have been cleaned, which means that it can be reused.
@@ -186,7 +182,7 @@ namespace HttpServer
         public void Close()
         {
             Cleanup();
-            IsAvailable = true;
+            Available = true;
         }
 
         /// <summary>
